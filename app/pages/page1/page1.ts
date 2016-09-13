@@ -7,8 +7,10 @@ import {Http} from '@angular/http';
   templateUrl: 'build/pages/page1/page1.html'
 
 })
+
 export class Page1 {
   time: String;
+  mode: String;
   items: any;
   public http: any;
 
@@ -38,12 +40,14 @@ export class Page1 {
         console.log(error);// Error getting the data
       });
 
-
-
-
-
+  }
+  onPageLoaded() {
+    setTimeout(() => {
+      this.myFunction();
+    }, 100);
   }
   myFunction() {
+    // Put here the code you want to execute
 
     var count = 0;
     var width = 0;
@@ -56,7 +60,7 @@ export class Page1 {
     });
   }
 
- 
+
 
 
 }
