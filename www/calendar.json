@@ -1,0 +1,6 @@
+
+    [
+        { "name": "Chirs Par", "phoneno": "0924543534", "reason": "1 - 3 Sep (VN)","kind":"work", "days":"3", "start":"1" },
+        { "name": "Lee CY", "phoneno": "0123567890", "reason": "10 - 14 Sep (KL)","kind":"trip" ,"days":"4", "start":"10" },
+        { "name": "Khanh", "phoneno": "0903899734", "reason": "8 - 16 Sep (KL)","kind":"off", "days":"9", "start":"8" }
+    ]

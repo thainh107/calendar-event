@@ -1,0 +1,66 @@
+$variable-percent : value;
+.rowMonth .rowHeader .rowChild {
+    width: 800px;
+}
+.textInfo {
+    font-size: 12px;
+    font-family: 'Times New Roman', Times, serif;
+}
+.rowChild {
+    margin-top: 3px;
+}
+.infor {
+    background-color: khaki;
+}
+.item{
+    border-radius:3px;
+}
+.work{
+    background-color: #f34764;
+    text-align: center;
+    color:#fff;
+}
+.trip{
+    background-color: #1abc9c;
+     text-align: center;
+    color:#fff;
+}
+.off{
+    background-color:#e39c12;
+     text-align: center;
+    color:#fff;
+}
+.textReason{
+    font-size: 11px;
+    text-align: center;
+}
+.col-child{
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.rowHeader{
+    background-color: #ccc;
+    font-size: 12px;
+    text-align: center;
+    line-height: 50px;
+}
+.rowHeader .col-header{
+border-right:1px solid #fff;
+width: 200px;
+  
+}
+.rowMonth{
+    text-align: center;
+    font-size: 20px;
+    color: #fff;
+    background-color: #1f90d2;
+    border-right:1px solid #fff;
+}
+.div-responsive{
+    width: 100%;
+    overflow: auto;
+    padding: 10px;
+    border: 1px solid #e6e9ee;
+    background-color: #f9fafb;
+    border-radius: 5px;
+}

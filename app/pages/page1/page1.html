@@ -1,0 +1,64 @@
+<ion-header>
+  <ion-navbar>
+    <button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Calendar</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding class="page1" ng-init="myFunction()">
+  
+  <div class="div-responsive">
+    
+  <ion-row style="width:900px" center class="rowMonth">
+    <ion-col>
+      <!--<div>September</div>-->
+      <h1>{{time}}</h1>
+      
+        <p id="demo" (click)="myFunction()">Click me to to load Event</p>
+    </ion-col>
+  </ion-row>
+  
+  <ion-row style="width:900px" baseline class="rowHeader">
+
+    <ion-col class="col-header">
+      <label>Name / Designation</label>
+    </ion-col>
+    <ion-col class="col-header">
+      <label>Contact No</label>
+    </ion-col>
+    <ion-col class="col-header">
+      <label>1 Sep - 7 Sep</label>
+    </ion-col>
+    <ion-col class="col-header">
+      <label>8 Sep - 14 Sep</label>
+    </ion-col>
+    <ion-col class="col-header">
+      <label>15 Sep - 21 Sep</label>
+    </ion-col>
+    <ion-col class="col-header">
+      <label>22 Sep - 28 Sep</label>
+    </ion-col>
+    <ion-col class="col-header">
+      <label>29 Sep - 4 Oct</label>
+    </ion-col>   
+  </ion-row>
+  <ion-row *ngFor="let item of items;let i = index" style="width:900px" class="rowChild">
+      <div style="width:14.3%; margin-left:0%" class="item infor">
+        <div class="textInfo">{{item.name}}</div>
+      </div>
+     
+      <div style="width:14.3%; margin-left:0%" class="item infor">
+        <div class="textInfo">{{item.phoneno}}</div>
+      </div>
+
+      <div id="r_{{i}}" style="width:0%; margin-left:0%" class="item off textReason">
+        {{item.reason}} {{i}}
+      </div>
+    
+  </ion-row>
+  
+  </div>
+</ion-content>
