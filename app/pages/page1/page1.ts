@@ -52,10 +52,13 @@ export class Page1 {
     var count = 0;
     var width = 0;
     var left = 0;
+    var kind = '';
     this.items.forEach(element => {
       width = (this.items[count].days) / 49 * 100;
       left = ((this.items[count].start) - 1) / 49 * 100;
       document.getElementById("r_" + count).setAttribute("style", "width:" + width + "%; margin-left:" + left + "%");
+      kind = this.items[count].kind;
+      document.getElementById("r_" + count).setAttribute("class","itemNode textReason "+kind);
       count++;
     });
   }

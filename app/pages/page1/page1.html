@@ -44,16 +44,16 @@
     </ion-col>   
   </ion-row>
   <ion-row *ngFor="let item of items;let i = index" style="width:900px" class="rowChild">
-      <div style="width:14.3%; margin-left:0%" class="item infor">
+      <div style="width:14.3%; margin-left:0%" class="infor">
         <div class="textInfo">{{item.name}}</div>
       </div>
      
-      <div style="width:14.3%; margin-left:0%" class="item infor">
+      <div style="width:14.3%; margin-left:0%" class="infor">
         <div class="textInfo">{{item.phoneno}}</div>
       </div>
 
-      <div id="r_{{i}}" style="width:0%; margin-left:0%" class="item off textReason">
-        {{item.reason}} {{i}}
+      <div id="r_{{i}}" style="width:0%; margin-left:0%">
+        {{item.reason}}
       </div>
     
   </ion-row>
