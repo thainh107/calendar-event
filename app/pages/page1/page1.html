@@ -1,62 +1,103 @@
 <ion-header>
-  <ion-navbar>
-    <button menuToggle>
-      <ion-icon name="menu"></ion-icon>
+    <ion-navbar>
+        <button menuToggle>      
+      <ion-icon name="menu">
+        
+      </ion-icon>
     </button>
-    <ion-title>Calendar</ion-title>
-  </ion-navbar>
+        <ion-title>Calendar</ion-title>
+    </ion-navbar>
 </ion-header>
 
 
 <ion-content padding class="page1">
-  
-  <div class="div-responsive">
-    
-  <ion-row style="width:900px" center class="rowMonth">
-    <ion-col>
-      <!--<div>September</div>-->
-      <h1>{{time}}</h1>
-    </ion-col>
-  </ion-row>
-  
-  <ion-row style="width:900px" baseline class="rowHeader">
 
-    <ion-col class="col-header">
-      <label>Name / Designation</label>
-    </ion-col>
-    <ion-col class="col-header">
-      <label>Contact No</label>
-    </ion-col>
-    <ion-col class="col-header">
-      <label>1 Sep - 7 Sep</label>
-    </ion-col>
-    <ion-col class="col-header">
-      <label>8 Sep - 14 Sep</label>
-    </ion-col>
-    <ion-col class="col-header">
-      <label>15 Sep - 21 Sep</label>
-    </ion-col>
-    <ion-col class="col-header">
-      <label>22 Sep - 28 Sep</label>
-    </ion-col>
-    <ion-col class="col-header">
-      <label>29 Sep - 4 Oct</label>
-    </ion-col>   
-  </ion-row>
-  <ion-row *ngFor="let item of items;let i = index" style="width:900px" class="rowChild">
-      <div style="width:14.3%; margin-left:0%" class="infor">
-        <div class="textInfo">{{item.name}}</div>
-      </div>
-     
-      <div style="width:14.3%; margin-left:0%" class="infor">
-        <div class="textInfo">{{item.phoneno}}</div>
-      </div>
 
-      <div id="r_{{i}}" style="width:0%; margin-left:0%">
-        {{item.reason}}
-      </div>
-    
-  </ion-row>
-  
-  </div>
+    <ion-row>
+        <div style="width : 400px">
+            <ion-list>
+                <ion-item>
+                    <ion-label>Leave Type</ion-label>
+                    <ion-select [(ngModel)]="leavetype">
+                        <ion-option value="" selected="true">Select all</ion-option>
+                        <ion-option value="1">AL</ion-option>
+                        <ion-option value="2">MC</ion-option>
+                        <ion-option value="3">Exam</ion-option>
+                    </ion-select>
+                </ion-item>
+            </ion-list>
+
+            <ion-list>
+                <ion-item>
+                    <ion-label>Month Year</ion-label>
+                    <ion-datetime displayFormat="MMMM YYYY" [(ngModel)]="year"></ion-datetime>
+                </ion-item>
+            </ion-list>
+        </div>
+    </ion-row>
+
+    <ion-row center>
+        <label style="bold">Leave Type</label>
+        <ul class="disc-color">
+            <li>
+                <span class="label label-danger">Work</span>
+            </li>
+            <li>
+                <span class="label label-warning">Off</span>
+            </li>
+            <li>
+                <span class="label label-info">Trip</span>
+            </li>
+        </ul>
+
+    </ion-row>
+    <div class="div-responsive">
+
+        <ion-row style="width:900px" center class="rowMonth">
+            <ion-col>
+                <!--<div>September</div>-->
+                <h1>{{time}}</h1>
+            </ion-col>
+        </ion-row>
+
+        <ion-row style="width:900px" baseline class="rowHeader">
+
+            <ion-col class="col-header">
+                <label>Name / Designation</label>
+            </ion-col>
+            <ion-col class="col-header">
+                <label>Contact No</label>
+            </ion-col>
+            <ion-col class="col-header">
+                <label>1 Sep - 7 Sep</label>
+            </ion-col>
+            <ion-col class="col-header">
+                <label>8 Sep - 14 Sep</label>
+            </ion-col>
+            <ion-col class="col-header">
+                <label>15 Sep - 21 Sep</label>
+            </ion-col>
+            <ion-col class="col-header">
+                <label>22 Sep - 28 Sep</label>
+            </ion-col>
+            <ion-col class="col-header">
+                <label>29 Sep - 4 Oct</label>
+            </ion-col>
+        </ion-row>
+        <ion-row *ngFor="let item of items;let i = index" style="width:900px" class="rowChild">
+            <div style="width:14.3%; margin-left:0%" class="infor">
+                <div class="textInfo">{{item.name}}</div>
+            </div>
+
+            <div style="width:14.3%; margin-left:0%" class="infor">
+                <div class="textInfo">{{item.phoneno}}</div>
+            </div>
+
+            <div id="r_{{i}}" style="width:0%; margin-left:0%">
+                {{item.reason}}
+            </div>
+
+        </ion-row>
+
+    </div>
 </ion-content>

@@ -3,8 +3,9 @@ $variable-percent : value;
     width: 800px;
 }
 .textInfo {
-    font-size: 12px;
+    font-size: 15px;
     font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
 }
 .rowChild {
     margin-top: 3px;
@@ -12,11 +13,12 @@ $variable-percent : value;
 .infor {
     background-color: khaki;
     padding-top: 5px;
+    
 }
 .itemNode{
     padding-left: 5px;
     border-radius:3px;
-    height: 35px;
+    height: 40px;
     text-align: center;
 }
 .work{
@@ -35,7 +37,7 @@ $variable-percent : value;
     color:#fff;
 }
 .textReason{
-    font-size: 11px;
+    font-size: 14px;
 }
 .col-child{
     padding-top: 5px;
@@ -48,8 +50,10 @@ $variable-percent : value;
     line-height: 50px;
 }
 .rowHeader .col-header{
-border-right:1px solid #fff;
+border-right:3px solid #fff;
 width: 200px;
+font-size: 15px;
+font-weight: bold;
   
 }
 .rowMonth{

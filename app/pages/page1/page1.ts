@@ -13,6 +13,10 @@ export class Page1 {
   mode: String;
   items: any;
   public http: any;
+  leavetype: any;
+  year: any;
+  monthString: String;
+  devList: any;
 
   constructor(public navCtrl: NavController, http: Http) {
     var d = new Date();
@@ -30,6 +34,9 @@ export class Page1 {
     month[10] = "November";
     month[11] = "December";
     this.time = month[d.getMonth()];
+    //this.monthString = month[d.getMonth()].toString();
+    // this.year = d.getMonth()+ " "+ d.getFullYear().toString();
+    this.year= new Date().toISOString();;
     this.http = http;
     this.http.get('calendar.json')
       .subscribe(data => {
@@ -39,7 +46,13 @@ export class Page1 {
       }, error => {
         console.log(error);// Error getting the data
       });
-
+    this.leavetype = '';
+    this.devList =[
+    {name: "Value1", id:"1"},
+    {name: "Value2", id:"2"},
+    {name: "Value3", id:"3"},
+    {name: "Value4", id:"4"},
+  ];
   }
   onPageLoaded() {
     setTimeout(() => {
@@ -58,7 +71,7 @@ export class Page1 {
       left = ((this.items[count].start) - 1) / 49 * 100;
       document.getElementById("r_" + count).setAttribute("style", "width:" + width + "%; margin-left:" + left + "%");
       kind = this.items[count].kind;
-      document.getElementById("r_" + count).setAttribute("class","itemNode textReason "+kind);
+      document.getElementById("r_" + count).setAttribute("class", "itemNode textReason " + kind);
       count++;
     });
   }
