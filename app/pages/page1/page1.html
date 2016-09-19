@@ -30,7 +30,7 @@
             <ion-list>
                 <ion-item>
                     <ion-label>Month Year</ion-label>
-                    <ion-datetime displayFormat="MMMM YYYY" [(ngModel)]="year"></ion-datetime>
+                    <ion-datetime displayFormat="MMMM YYYY" [(ngModel)]="year" (ionChange)="changeMonth()"></ion-datetime>
                 </ion-item>
             </ion-list>
         </div>
@@ -40,57 +40,50 @@
         <label style="bold">Leave Type</label>
         <ul class="disc-color">
             <li>
-                <span class="label label-danger">Work</span>
+                <span class="label work">Work</span>
             </li>
             <li>
-                <span class="label label-warning">Off</span>
+                <span class="label off">Off</span>
             </li>
             <li>
-                <span class="label label-info">Trip</span>
+                <span class="label trip">Trip</span>
             </li>
         </ul>
 
     </ion-row>
     <div class="div-responsive">
 
-        <ion-row style="width:900px" center class="rowMonth">
+        <ion-row style="width:980px" center class="rowMonth">
             <ion-col>
                 <!--<div>September</div>-->
-                <h1>{{time}}</h1>
+                <h1>{{dateChange}}</h1>
             </ion-col>
         </ion-row>
 
-        <ion-row style="width:900px" baseline class="rowHeader">
+        <ion-row style="width:980px" baseline class="rowHeader">
 
             <ion-col class="col-header">
-                <label>Name / Designation</label>
+                <label>Name-Designation-Contact No</label>
             </ion-col>
             <ion-col class="col-header">
-                <label>Contact No</label>
+                <label>1 {{shortMonth}} - 7 {{shortMonth}}</label>
             </ion-col>
             <ion-col class="col-header">
-                <label>1 Sep - 7 Sep</label>
+                <label>8 {{shortMonth}} - 14 {{shortMonth}}</label>
             </ion-col>
             <ion-col class="col-header">
-                <label>8 Sep - 14 Sep</label>
+                <label>15 {{shortMonth}} - 21 {{shortMonth}}</label>
             </ion-col>
             <ion-col class="col-header">
-                <label>15 Sep - 21 Sep</label>
+                <label>22 {{shortMonth}} - 28 {{shortMonth}}</label>
             </ion-col>
             <ion-col class="col-header">
-                <label>22 Sep - 28 Sep</label>
-            </ion-col>
-            <ion-col class="col-header">
-                <label>29 Sep - 4 Oct</label>
+                <label>{{startW5day}} {{startW5month}} - {{endW5day}} {{endW5month}}</label>
             </ion-col>
         </ion-row>
-        <ion-row *ngFor="let item of items;let i = index" style="width:900px" class="rowChild">
-            <div style="width:14.3%; margin-left:0%" class="infor">
-                <div class="textInfo">{{item.name}}</div>
-            </div>
-
-            <div style="width:14.3%; margin-left:0%" class="infor">
-                <div class="textInfo">{{item.phoneno}}</div>
+        <ion-row *ngFor="let item of items;let i = index" style="width:980px" class="rowChild">
+            <div style="width:16.67%; margin-left:0%" class="infor">
+                <div class="textInfo">{{item.name}} - {{item.phoneno}}</div>
             </div>
 
             <div id="r_{{i}}" style="width:0%; margin-left:0%">

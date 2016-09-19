@@ -14,49 +14,46 @@ export class Page1 {
   items: any;
   public http: any;
   leavetype: any;
-  year: any;
+  year: string;
   monthString: String;
   devList: any;
+  dateChange: any;
+  month: any;
+  shortMonth: String;
+  startW5day: String;
+  startW5month: String;
+  endW5day: String;
+  endW5month: String;
+  endM: number;
+
 
   constructor(public navCtrl: NavController, http: Http) {
     var d = new Date();
-    var month = new Array();
-    month[0] = "January";
-    month[1] = "February";
-    month[2] = "March";
-    month[3] = "April";
-    month[4] = "May";
-    month[5] = "June";
-    month[6] = "July";
-    month[7] = "August";
-    month[8] = "September";
-    month[9] = "October";
-    month[10] = "November";
-    month[11] = "December";
-    this.time = month[d.getMonth()];
-    //this.monthString = month[d.getMonth()].toString();
-    // this.year = d.getMonth()+ " "+ d.getFullYear().toString();
-    this.year= new Date().toISOString();;
+    this.month = ["January", "February", "March", "April", "May", "June",
+      "July", "August", "September", "October", "November", "December"];
+    this.time = this.month[d.getMonth()];
+    if (d.getMonth() == 11) {
+      this.endM = 0;
+    }
+    else {
+      this.endM = d.getMonth();
+    }
+    this.monthString = new Date(d.getFullYear(), this.endM + 1, 0).getDate().toString();
+    this.year = new Date().toISOString();
     this.http = http;
     this.http.get('calendar.json')
       .subscribe(data => {
         console.log(data);
         this.items = JSON.parse(data._body);//Bind data to items object
-        //document.getElementById("r_0").setAttribute("style", "width:50.1%; margin-left:10%");
       }, error => {
         console.log(error);// Error getting the data
       });
     this.leavetype = '';
-    this.devList =[
-    {name: "Value1", id:"1"},
-    {name: "Value2", id:"2"},
-    {name: "Value3", id:"3"},
-    {name: "Value4", id:"4"},
-  ];
   }
   onPageLoaded() {
     setTimeout(() => {
       this.myFunction();
+      this.changeMonth();
     }, 100);
   }
   myFunction() {
@@ -67,13 +64,55 @@ export class Page1 {
     var left = 0;
     var kind = '';
     this.items.forEach(element => {
-      width = (this.items[count].days) / 49 * 100;
-      left = ((this.items[count].start) - 1) / 49 * 100;
+      width = (this.items[count].days) / 42 * 100;
+      left = ((this.items[count].start) - 1) / 42 * 100;
       document.getElementById("r_" + count).setAttribute("style", "width:" + width + "%; margin-left:" + left + "%");
       kind = this.items[count].kind;
       document.getElementById("r_" + count).setAttribute("class", "itemNode textReason " + kind);
       count++;
     });
+  }
+
+  changeMonth() {
+    // this.dateChange = new Date().toISOString().getUTCMonth()
+
+    let displayDate = new Date(this.year);
+    var getMofD = displayDate.getMonth()+1;
+    if (displayDate.getMonth() == 11) {
+      getMofD = 0;
+    }
+    this.dateChange = this.month[displayDate.getMonth()];
+    this.monthString = new Date(displayDate.getFullYear(), displayDate.getMonth() + 1, 0).getDate().toString();
+    this.shortMonth = this.shortMonths(displayDate.getMonth().toString());
+    //load the last column
+    if (this.dateChange.toString() == "February") {
+      var mFeb = new Date(displayDate.getFullYear(), 2, 0).getDate();
+      if ((mFeb - 28) == 0) {
+        this.startW5day = "1";
+        this.startW5month = "Mar";
+        this.endW5day = "7";
+        this.endW5month = "Mar";
+      }
+      else {
+        this.startW5day = "29";
+        this.startW5month = this.shortMonth;
+        this.endW5day = "6";
+        this.endW5month = "Mar";
+      }
+    }
+    else {
+      this.startW5day = "29";
+      this.startW5month = this.shortMonth;
+      var day = new Date(displayDate.getFullYear(), displayDate.getMonth() + 1, 0).getDate();
+      var lastDay = 7 - (day - 28);
+      this.endW5day = lastDay.toString();
+      this.endW5month = this.shortMonths(getMofD);
+    }
+  }
+  shortMonths(m) {
+    var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+      "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    return monthNames[m].toString();
   }
 
 
