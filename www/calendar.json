@@ -1,6 +1,58 @@
-
-    [
-        { "name": "Chirs Par", "phoneno": "0924543534", "reason": "1 - 3 Sep (VN)","kind":"work", "days":"3", "start":"1" },
-        { "name": "Lee CY", "phoneno": "0123567890", "reason": "10 - 14 Sep (KL)","kind":"trip" ,"days":"4", "start":"10" },
-        { "name": "Khanh", "phoneno": "0903899734", "reason": "8 - 16 Sep (KL)","kind":"off", "days":"9", "start":"8" }
-    ]
+[{
+        "name": "Chirs Par",
+        "phoneno": "0924543534",
+        "start": "1",
+        "end": "3",
+        "location": "VN",
+        "month": "8",
+        "kind": "work",
+        "days": "3"
+    },
+    {
+        "name": "Lee CY",
+        "phoneno": "0123567890",
+        "start": "10",
+        "end": "14",
+        "location": "KL",
+        "month": "8",
+        "kind": "trip",
+        "days": "4"
+    },
+    {
+        "name": "Khanh",
+        "phoneno": "0903899734",
+        "start": "3",
+        "end": "16",
+        "location": "Singapore",
+        "month": "9",
+        "kind": "off",
+        "days": "14"
+    }, {
+        "name": "Hanh",
+        "phoneno": "098034834",
+        "start": "8",
+        "end": "20",
+        "location": "JP",
+        "month": "9",
+        "kind": "trip",
+        "days": "13"
+    }, {
+        "name": "Dang",
+        "phoneno": "097343424",
+        "start": "1",
+        "end": "20",
+        "location": "UK",
+        "month": "9",
+        "kind": "work",
+        "days": "21"
+    }, {
+        "name": "Tien",
+        "phoneno": "090382222734",
+        "start": "20",
+        "end": "29",
+        "location": "Congo",
+        "month": "9",
+        "kind": "work",
+        "days": "11"
+    }
+]
