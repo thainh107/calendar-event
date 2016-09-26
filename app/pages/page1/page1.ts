@@ -1,11 +1,11 @@
-import { Component,ViewChild, AfterViewInit, ElementRef } from '@angular/core';
+import { Component, ViewChild, AfterViewInit, ElementRef } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import {Http} from '@angular/http';
-
+import {FriendComponent} from './friend.component';
 
 @Component({
-  templateUrl: 'build/pages/page1/page1.html'
-
+  templateUrl: 'build/pages/page1/page1.html',
+  directives: [FriendComponent]
 })
 
 export class Page1 {
@@ -25,7 +25,7 @@ export class Page1 {
   endW5day: String;
   endW5month: String;
   endM: number;
-
+  friends:any;
 
   constructor(public navCtrl: NavController, http: Http) {
     var d = new Date();
@@ -49,18 +49,17 @@ export class Page1 {
         console.log(error);// Error getting the data
       });
     this.leavetype = '';
-    //this.devList = this.items.filter(item => item.month.startsWith(this.endM));
   }
   onPageLoaded() {
     setTimeout(() => {
+      this.devList = this.items.filter(item => item.month.startsWith(this.endM));
       this.myFunction();
       this.changeMonth();
     }, 3000);
   }
   myFunction() {
     // Put here the code you want to execute
-this.devList = this.items.filter(item => item.month.startsWith(this.endM));
-console.log(this.devList);
+    
     var count = 0;
     var width = 0;
     var left = 0;
@@ -80,8 +79,7 @@ console.log(this.devList);
 
     let displayDate = new Date(this.year);
     this.devList = this.items.filter(item => item.month.startsWith(displayDate.getMonth()));
-    console.log(this.devList);
-    var getMofD = displayDate.getMonth()+1;
+    var getMofD = displayDate.getMonth() + 1;
     if (displayDate.getMonth() == 11) {
       getMofD = 0;
     }
@@ -110,8 +108,9 @@ console.log(this.devList);
       var day = new Date(displayDate.getFullYear(), displayDate.getMonth() + 1, 0).getDate();
       var lastDay = 7 - (day - 28);
       this.endW5day = lastDay.toString();
-      this.endW5month = this.shortMonths(getMofD);
+      this.endW5month = this.shortMonths(getMofD);      
     }
+    this.myFunction();
   }
   shortMonths(m) {
     var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
