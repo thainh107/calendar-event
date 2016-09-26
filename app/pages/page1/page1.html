@@ -81,13 +81,13 @@
                 <label>{{startW5day}} {{startW5month}} - {{endW5day}} {{endW5month}}</label>
             </ion-col>
         </ion-row>
-        <ion-row *ngFor="let item of items;let i = index" style="width:980px" class="rowChild">
-            <div style="width:16.67%; margin-left:0%" class="infor">
-                <div class="textInfo">{{item.name}} - {{item.phoneno}}</div>
+        <ion-row *ngFor="let dev of devList;let i = index" style="width:980px" class="rowChild">
+            <div style="width:16.67%; margin-left:0%" class="infor textInfo">
+                {{dev.name}} - {{dev.phoneno}}
             </div>
 
             <div id="r_{{i}}" style="width:0%; margin-left:0%">
-                {{item.start}} - {{item.end}} {{shortMonth}} ({{item.location}})
+                {{dev.start}} - {{dev.end}} {{shortMonth}} ({{dev.location}})
             </div>
 
         </ion-row>

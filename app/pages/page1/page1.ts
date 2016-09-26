@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,ViewChild, AfterViewInit, ElementRef } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import {Http} from '@angular/http';
 
@@ -49,25 +49,27 @@ export class Page1 {
         console.log(error);// Error getting the data
       });
     this.leavetype = '';
+    //this.devList = this.items.filter(item => item.month.startsWith(this.endM));
   }
   onPageLoaded() {
     setTimeout(() => {
       this.myFunction();
       this.changeMonth();
-    }, 100);
+    }, 3000);
   }
   myFunction() {
     // Put here the code you want to execute
-
+this.devList = this.items.filter(item => item.month.startsWith(this.endM));
+console.log(this.devList);
     var count = 0;
     var width = 0;
     var left = 0;
     var kind = '';
-    this.items.forEach(element => {
-      width = (this.items[count].days) / 42 * 100;
-      left = ((this.items[count].start) - 1) / 42 * 100;
+    this.devList.forEach(element => {
+      width = (this.devList[count].days) / 42 * 100;
+      left = ((this.devList[count].start) - 1) / 42 * 100;
       document.getElementById("r_" + count).setAttribute("style", "width:" + width + "%; margin-left:" + left + "%");
-      kind = this.items[count].kind;
+      kind = this.devList[count].kind;
       document.getElementById("r_" + count).setAttribute("class", "itemNode textReason " + kind);
       count++;
     });
@@ -77,6 +79,8 @@ export class Page1 {
     // this.dateChange = new Date().toISOString().getUTCMonth()
 
     let displayDate = new Date(this.year);
+    this.devList = this.items.filter(item => item.month.startsWith(displayDate.getMonth()));
+    console.log(this.devList);
     var getMofD = displayDate.getMonth()+1;
     if (displayDate.getMonth() == 11) {
       getMofD = 0;
