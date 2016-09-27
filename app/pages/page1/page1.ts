@@ -2,6 +2,7 @@ import { Component, ViewChild, AfterViewInit, ElementRef } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import {Http} from '@angular/http';
 import {FriendComponent} from './friend.component';
+import {Events} from 'ionic-angular';
 
 @Component({
   templateUrl: 'build/pages/page1/page1.html',
@@ -27,7 +28,7 @@ export class Page1 {
   endM: number;
   friends:any;
 
-  constructor(public navCtrl: NavController, http: Http) {
+  constructor(public navCtrl: NavController, http: Http,public events:Events) {
     var d = new Date();
     this.month = ["January", "February", "March", "April", "May", "June",
       "July", "August", "September", "October", "November", "December"];
@@ -49,17 +50,20 @@ export class Page1 {
         console.log(error);// Error getting the data
       });
     this.leavetype = '';
+    // this.devList = this.items.filter(item => item.month.startsWith(this.endM));
+    // this.events.publish('myEvent', this.devList);
   }
   onPageLoaded() {
     setTimeout(() => {
       this.devList = this.items.filter(item => item.month.startsWith(this.endM));
+      this.events.publish('myEvent',this.devList);
       this.myFunction();
       this.changeMonth();
     }, 3000);
   }
   myFunction() {
     // Put here the code you want to execute
-    
+    this.events.publish('myEvent',this.devList);
     var count = 0;
     var width = 0;
     var left = 0;

@@ -1,9 +1,39 @@
 import { Component } from '@angular/core';
+import {Events} from 'ionic-angular';
+
 
 
 @Component({
     selector: 'my-friends',
-    template: `
+    template: `<div class="div-responsive">
+
+        <ion-row style="width:980px" center class="rowMonth">
+            <ion-col>
+                <h1>{{dateChange}}</h1>
+            </ion-col>
+        </ion-row>
+
+        <ion-row style="width:980px" baseline class="rowHeader">
+
+            <ion-col class="col-header">
+                <label>Name-Contact No</label>
+            </ion-col>
+            <ion-col class="col-header">
+                <label>1 {{shortMonth}} - 7 {{shortMonth}}</label>
+            </ion-col>
+            <ion-col class="col-header">
+                <label>8 {{shortMonth}} - 14 {{shortMonth}}</label>
+            </ion-col>
+            <ion-col class="col-header">
+                <label>15 {{shortMonth}} - 21 {{shortMonth}}</label>
+            </ion-col>
+            <ion-col class="col-header">
+                <label>22 {{shortMonth}} - 28 {{shortMonth}}</label>
+            </ion-col>
+            <ion-col class="col-header">
+                <label>{{startW5day}} {{startW5month}} - {{endW5day}} {{endW5month}}</label>
+            </ion-col>
+        </ion-row>
         <ion-row *ngFor="let dev of devList;let i = index" style="width:980px" class="rowChild">
                 <div style="width:16.67%; margin-left:0%" class="infor textInfo">
                     {{dev.name}} - {{dev.phoneno}}
@@ -14,12 +44,13 @@ import { Component } from '@angular/core';
                 </div>
 
             </ion-row>
+            </div>
     `
 })
 export class FriendComponent{
     devList:any;
     componentName:any;
-    constructor(){
+    constructor(public events:Events){
         this.devList=[{
         "name": "Chirs Par",
         "phoneno": "0924543534",
@@ -78,6 +109,12 @@ export class FriendComponent{
         "days": "11"
     }
 ];
+        var d = new Date();
+        this.devList = this.devList.filter(item => item.month.startsWith(d.getMonth()));
         this.componentName = "directive";
+        this.events.subscribe('myEvent',(object) => {
+            console.log('goi duoc roi');
+            console.log(object);
+        });
     }
 }
