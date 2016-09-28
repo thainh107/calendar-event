@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {Events} from 'ionic-angular';
 
 
 @Component({
@@ -19,7 +20,8 @@ import { Component } from '@angular/core';
 export class FriendComponent{
     devList:any;
     componentName:any;
-    constructor(){
+    tempM:any;
+    constructor(public events:Events){
         this.devList=[{
         "name": "Chirs Par",
         "phoneno": "0924543534",
@@ -79,5 +81,13 @@ export class FriendComponent{
     }
 ];
         this.componentName = "directive";
+        var d=new Date();
+        this.tempM = d.getMonth();
+        this.events.subscribe('myEvent',(object) => {      
+            console.log('goi dc roi');
+            console.log(object[0]);
+            this.devList=object[0];
+        });
+        //this.devList=this.devList.filter(item => item.month.startsWith(d.getMonth()));
     }
 }

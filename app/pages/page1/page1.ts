@@ -2,6 +2,7 @@ import { Component, ViewChild, AfterViewInit, ElementRef } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import {Http} from '@angular/http';
 import {FriendComponent} from './friend.component';
+import {Events} from 'ionic-angular';
 
 @Component({
   templateUrl: 'build/pages/page1/page1.html',
@@ -27,7 +28,7 @@ export class Page1 {
   endM: number;
   friends:any;
 
-  constructor(public navCtrl: NavController, http: Http) {
+  constructor(public navCtrl: NavController, http: Http, public events:Events) {
     var d = new Date();
     this.month = ["January", "February", "March", "April", "May", "June",
       "July", "August", "September", "October", "November", "December"];
@@ -53,7 +54,7 @@ export class Page1 {
   onPageLoaded() {
     setTimeout(() => {
       this.devList = this.items.filter(item => item.month.startsWith(this.endM));
-      this.myFunction();
+      //this.myFunction();
       this.changeMonth();
     }, 3000);
   }
@@ -79,6 +80,9 @@ export class Page1 {
 
     let displayDate = new Date(this.year);
     this.devList = this.items.filter(item => item.month.startsWith(displayDate.getMonth()));
+
+    this.events.publish('myEvent',this.devList);
+
     var getMofD = displayDate.getMonth() + 1;
     if (displayDate.getMonth() == 11) {
       getMofD = 0;
@@ -110,7 +114,7 @@ export class Page1 {
       this.endW5day = lastDay.toString();
       this.endW5month = this.shortMonths(getMofD);      
     }
-    this.myFunction();
+    //this.myFunction();
   }
   shortMonths(m) {
     var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
