@@ -12,6 +12,7 @@ import {MyData} from '../../providers/my-data/my-data';
                 </div>
                 <div [ngStyle]="{width:(dev.start-1)/42*100+'%'}"></div>
                 <div class="{{dev.kind}}" [ngStyle]="{width:dev.days/42*100+'%'}">
+                
                     {{dev.start}} - {{dev.end}} {{shortMonth}} ({{dev.location}})
                     </div>
 
@@ -20,15 +21,14 @@ import {MyData} from '../../providers/my-data/my-data';
   providers:[MyData]
 })
 export class FriendComponent{
+    //plan 2 :<div id="r_{{i}}" class="{{dev.kind}}" [ngStyle]="{width:dev.days/42*100+'%','margin-left':(dev.start - 1) / 42 * 100+'%'}">
     devList:any;
     componentName:any;
     tempM:any;
     constructor(public events:Events,myData : MyData){     
         var d=new Date();
         this.tempM = d.getMonth();
-        this.events.subscribe('myEvent',(object) => {      
-            console.log('goi dc roi');
-            console.log(object[0]);
+        this.events.subscribe('myEvent',(object) => {
             this.devList=object[0];
         });
         

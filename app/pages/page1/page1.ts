@@ -12,11 +12,8 @@ import {MyData} from '../../providers/my-data/my-data';
 })
 
 export class Page1 {
-  @ViewChild('myDiv') private myfriends:ElementRef;
-  time: String;
   mode: String;
   items: any;
-  public http: any;
   leavetype: any;
   year: string;
   monthString: String;
@@ -30,11 +27,10 @@ export class Page1 {
   endW5month: String;
   endM: number;
 
-  constructor(public navCtrl: NavController, http: Http, public events: Events,myData : MyData) {
+  constructor(public navCtrl: NavController, public events: Events,myData : MyData) {
     var d = new Date();
     this.month = ["January", "February", "March", "April", "May", "June",
       "July", "August", "September", "October", "November", "December"];
-    this.time = this.month[d.getMonth()];
     if (d.getMonth() == 11) {
       this.endM = 0;
     }

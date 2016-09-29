@@ -17,18 +17,6 @@
         <div style="width : 400px">
             <ion-list>
                 <ion-item>
-                    <ion-label>Leave Type</ion-label>
-                    <ion-select [(ngModel)]="leavetype">
-                        <ion-option value="" selected="true">Select all</ion-option>
-                        <ion-option value="1">AL</ion-option>
-                        <ion-option value="2">MC</ion-option>
-                        <ion-option value="3">Exam</ion-option>
-                    </ion-select>
-                </ion-item>
-            </ion-list>
-
-            <ion-list>
-                <ion-item>
                     <ion-label>Month Year</ion-label>
                     <ion-datetime displayFormat="MMMM YYYY" [(ngModel)]="year" (ionChange)="changeMonth()"></ion-datetime>
                 </ion-item>
@@ -48,9 +36,6 @@
             </li>
             <li>
                 <span class="label trip">Trip</span>
-            </li>
-            <li>
-                <span (click)="myFunction()">Trip</span>
             </li>
         </ul>
 
