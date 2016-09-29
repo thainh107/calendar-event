@@ -3,13 +3,17 @@ import { NavController } from 'ionic-angular';
 import {Http} from '@angular/http';
 import {FriendComponent} from './friend.component';
 import {Events} from 'ionic-angular';
+import {MyData} from '../../providers/my-data/my-data';
+
 
 @Component({
   templateUrl: 'build/pages/page1/page1.html',
-  directives: [FriendComponent]
+  directives: [FriendComponent],
+  providers:[MyData]
 })
 
 export class Page1 {
+  @ViewChild('myDiv') private myfriends:ElementRef;
   time: String;
   mode: String;
   items: any;
@@ -26,9 +30,10 @@ export class Page1 {
   endW5day: String;
   endW5month: String;
   endM: number;
-  friends:any;
 
-  constructor(public navCtrl: NavController, http: Http,public events:Events) {
+
+  constructor(public navCtrl: NavController, http: Http, public events: Events,myData : MyData) {
+
     var d = new Date();
     this.month = ["January", "February", "March", "April", "May", "June",
       "July", "August", "September", "October", "November", "December"];
@@ -41,48 +46,19 @@ export class Page1 {
     }
     this.monthString = new Date(d.getFullYear(), this.endM + 1, 0).getDate().toString();
     this.year = new Date().toISOString();
-    this.http = http;
-    this.http.get('calendar.json')
-      .subscribe(data => {
-        console.log(data);
-        this.items = JSON.parse(data._body);//Bind data to items object
-      }, error => {
-        console.log(error);// Error getting the data
-      });
     this.leavetype = '';
-    // this.devList = this.items.filter(item => item.month.startsWith(this.endM));
-    // this.events.publish('myEvent', this.devList);
-  }
-  onPageLoaded() {
-    setTimeout(() => {
-      this.devList = this.items.filter(item => item.month.startsWith(this.endM));
-      this.events.publish('myEvent',this.devList);
-      this.myFunction();
-      this.changeMonth();
-    }, 3000);
-  }
-  myFunction() {
-    // Put here the code you want to execute
-    this.events.publish('myEvent',this.devList);
-    var count = 0;
-    var width = 0;
-    var left = 0;
-    var kind = '';
-    this.devList.forEach(element => {
-      width = (this.devList[count].days) / 42 * 100;
-      left = ((this.devList[count].start) - 1) / 42 * 100;
-      document.getElementById("r_" + count).setAttribute("style", "width:" + width + "%; margin-left:" + left + "%");
-      kind = this.devList[count].kind;
-      document.getElementById("r_" + count).setAttribute("class", "itemNode textReason " + kind);
-      count++;
-    });
+    //load data and excute function
+    myData.load()
+    .then(user => this.items = user)
+    .then(user=>this.changeMonth());
   }
 
   changeMonth() {
-    // this.dateChange = new Date().toISOString().getUTCMonth()
-
     let displayDate = new Date(this.year);
     this.devList = this.items.filter(item => item.month.startsWith(displayDate.getMonth()));
+
+    this.events.publish('myEvent', this.devList);
+
     var getMofD = displayDate.getMonth() + 1;
     if (displayDate.getMonth() == 11) {
       getMofD = 0;
@@ -112,18 +88,15 @@ export class Page1 {
       var day = new Date(displayDate.getFullYear(), displayDate.getMonth() + 1, 0).getDate();
       var lastDay = 7 - (day - 28);
       this.endW5day = lastDay.toString();
-      this.endW5month = this.shortMonths(getMofD);      
+      this.endW5month = this.shortMonths(getMofD);
     }
-    this.myFunction();
   }
+
   shortMonths(m) {
     var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
       "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
     return monthNames[m].toString();
   }
-
-
-
 
 }
 
