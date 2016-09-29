@@ -49,6 +49,9 @@
             <li>
                 <span class="label trip">Trip</span>
             </li>
+            <li>
+                <span (click)="myFunction()">Trip</span>
+            </li>
         </ul>
 
     </ion-row>
@@ -82,7 +85,7 @@
                 <label>{{startW5day}} {{startW5month}} - {{endW5day}} {{endW5month}}</label>
             </ion-col>
         </ion-row>
-        <my-friends></my-friends>
+        <myfriends #myDiv></myfriends>
         <!--<ion-row *ngFor="let dev of devList;let i = index" style="width:980px" class="rowChild">
                 <div style="width:16.67%; margin-left:0%" class="infor textInfo">
                     {{dev.name}} - {{dev.phoneno}}
