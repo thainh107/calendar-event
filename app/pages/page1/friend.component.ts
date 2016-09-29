@@ -10,10 +10,10 @@ import {MyData} from '../../providers/my-data/my-data';
                 <div style="width:16.67%; margin-left:0%" class="infor textInfo">
                     {{dev.name}} - {{dev.phoneno}}
                 </div>
-
-                <div id="r_{{i}}" style="width:0%; margin-left:0%">
+                <div [ngStyle]="{width:(dev.start-1)/42*100+'%'}"></div>
+                <div class="{{dev.kind}}" [ngStyle]="{width:dev.days/42*100+'%'}">
                     {{dev.start}} - {{dev.end}} {{shortMonth}} ({{dev.location}})
-                </div>
+                    </div>
 
             </ion-row>
     `,
@@ -23,32 +23,15 @@ export class FriendComponent{
     devList:any;
     componentName:any;
     tempM:any;
-    constructor(public events:Events,myData : MyData){        
-        //myData.load().then(user=>this.devList = user);
+    constructor(public events:Events,myData : MyData){     
         var d=new Date();
         this.tempM = d.getMonth();
         this.events.subscribe('myEvent',(object) => {      
             console.log('goi dc roi');
             console.log(object[0]);
             this.devList=object[0];
-            //this.myFunction();
         });
-        //this.onPageLoaded();
-        //this.devList=this.devList.filter(item => item.month.startsWith(d.getMonth()));
+        
     }
-//   onPage(){
-//     var count = 0;
-//     var width = 0;
-//     var left = 0;
-//     var kind = '';
-//     this.devList.forEach(element => {
-//       width = (this.devList[count].days) / 42 * 100;
-//       left = ((this.devList[count].start) - 1) / 42 * 100;
-//       document.getElementById("r_" + count).setAttribute("style", "width:" + width + "%; margin-left:" + left + "%");
-//       kind = this.devList[count].kind;
-//       document.getElementById("r_" + count).setAttribute("class", "itemNode textReason " + kind);
-//       count++;
-//     });
-//     console.log("load style2");
-//   }
+
 }

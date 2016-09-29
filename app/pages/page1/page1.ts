@@ -44,48 +44,12 @@ export class Page1 {
     this.monthString = new Date(d.getFullYear(), this.endM + 1, 0).getDate().toString();
     this.year = new Date().toISOString();
     this.leavetype = '';
+    //load data and excute function
     myData.load()
     .then(user => this.items = user)
-    .then(user=>this.changeMonth())
-    //.then(user => this.myFunction());
+    .then(user=>this.changeMonth());
   }
-  ngAfterViewInit() {
-    // this.myFunction();
-    //  var count = 0;
-    // var width = 0;
-    // var left = 0;
-    // var kind = '';
-    // this.devList.forEach(element => {
-    //   width = (this.devList[count].days) / 42 * 100;
-    //   left = ((this.devList[count].start) - 1) / 42 * 100;
-    //   document.getElementById("r_" + count).setAttribute("style", "width:" + width + "%; margin-left:" + left + "%");
-    //   kind = this.devList[count].kind;
-    //   document.getElementById("r_" + count).setAttribute("class", "itemNode textReason " + kind);
-    //   count++;
-    // });
-  }
-  myFunction() {
-    // Put here the code you want to execute
-
-    var count = 0;
-    var width = 0;
-    var left = 0;
-    var kind = '';
-    this.devList.forEach(element => {
-      width = (this.devList[count].days) / 42 * 100;
-      left = ((this.devList[count].start) - 1) / 42 * 100;
-      document.getElementById("r_" + count).setAttribute("style", "width:" + width + "%; margin-left:" + left + "%");
-      kind = this.devList[count].kind;
-      document.getElementById("r_" + count).setAttribute("class", "itemNode textReason " + kind);
-      count++;
-    });
-    console.log("load style");
-  }
-
-  
-
   changeMonth() {
-    // this.dateChange = new Date().toISOString().getUTCMonth()
     let displayDate = new Date(this.year);
     this.devList = this.items.filter(item => item.month.startsWith(displayDate.getMonth()));
 
@@ -122,8 +86,6 @@ export class Page1 {
       this.endW5day = lastDay.toString();
       this.endW5month = this.shortMonths(getMofD);
     }
-    console.log("changmonth");
-
   }
 
   shortMonths(m) {
