@@ -23,3 +23,111 @@ ul.disc-color li {
 ul.disc-color li span {
     padding: 5px 10px;
 }
+
+.rowMonth .rowHeader .rowChild {
+    width: 800px;
+}
+
+.textInfo {
+    font-size: 15px;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+}
+
+.rowChild {
+    margin-top: 3px;
+    height: 35px;
+}
+
+.infor {
+    background-color: khaki;
+    padding-top: 5px;
+}
+
+.itemNode {
+    padding-left: 5px;
+    border-radius: 3px;
+    height: 30px;
+    text-align: center;
+}
+
+.btn-disabled {
+    color: #888 !important;
+    background-color: #ccc !important;
+    border-color: #cdcdcd !important;
+}
+
+.item-info {
+    text-align: center;
+    color: #333;
+    border-radius: 5px;
+    line-height: 40px;
+}
+
+.item-leave {
+    text-align: center;
+    color: #fff;
+    border-radius: 5px;
+    line-height: 40px;
+}
+
+.btn-round {
+    padding: 0 2.6rem;
+    border-radius: 64px;
+}
+
+.btn-round::hover {
+    background-color: transparent;
+}
+
+.work {
+    background-color: #f34764;
+}
+
+.trip {
+    background-color: #1abc9c;
+}
+
+.off {
+    background-color: #e39c12;
+}
+
+.textReason {
+    font-size: 14px;
+}
+
+.col-child {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.rowHeader {
+    background-color: #ccc;
+    font-size: 12px;
+    text-align: center;
+    line-height: 50px;
+}
+
+.rowHeader .col-header {
+    border-right: 3px solid #fff;
+    width: 200px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.rowMonth {
+    text-align: center;
+    font-size: 20px;
+    color: #fff;
+    background-color: #1f90d2;
+    border-right: 1px solid #fff;
+}
+
+.div-responsive {
+    width: 100%;
+    overflow: auto;
+    padding: 10px;
+    border: 1px solid #e6e9ee;
+    background-color: #f9fafb;
+    border-radius: 5px;
+}

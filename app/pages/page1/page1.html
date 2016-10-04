@@ -29,13 +29,13 @@
         <label style="bold">Leave Type</label>
         <ul class="disc-color">
             <li>
-                <span class="label work">Work</span>
+                <button id="1" small class="btn-round {{filterWork?'work disable-hover':'btn-disabled'}}" (click)="filterType(1)">Work</button>
             </li>
             <li>
-                <span class="label off">Off</span>
+                <button id="2" small class="btn-round {{filterOff?'off disable-hover':'btn-disabled'}}" (click)="filterType(2)">Off</button>
             </li>
             <li>
-                <span class="label trip">Trip</span>
+                <button id="3" small class="btn-round {{filterTrip?'trip disable-hover':'btn-disabled'}}" (click)="filterType(3)">Trip</button>
             </li>
         </ul>
 
@@ -52,7 +52,7 @@
         <ion-row style="width:980px" baseline class="rowHeader">
 
             <ion-col class="col-header">
-                <label>Name-Contact No</label>
+                <label>Employee</label>
             </ion-col>
             <ion-col class="col-header">
                 <label>1 {{shortMonth}} - 7 {{shortMonth}}</label>
